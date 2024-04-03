@@ -1,13 +1,7 @@
 import { useState } from 'react';
+import { TodoType } from '../types/types';
 
-interface Todo {
-  author: string;
-  title: string;
-  isComplete: boolean;
-  id: string;
-}
-
-const Todo = (props: Todo) => {
+const Todo = (props: TodoType) => {
   const { author, id, isComplete, title } = props;
   const [isDone, setIsDone] = useState(isComplete);
 

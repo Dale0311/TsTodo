@@ -1,8 +1,11 @@
+import { TodoType } from '../types/types';
 import Todo from './Todo';
-import data from './data';
+type TodoList = {
+  todos: TodoType[];
+};
 
-const TodoList = () => {
-  const todoList = data.map((todo) => (
+const TodoList = ({ todos }: TodoList) => {
+  const todoList = todos.map((todo) => (
     <Todo
       author={todo.author}
       title={todo.title}
