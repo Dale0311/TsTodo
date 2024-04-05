@@ -4,3 +4,7 @@ export type TodoType = {
   isComplete: boolean;
   id: string;
 };
+
+export type DeleteTodoType = {
+  (id: string): void;
+};

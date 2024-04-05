@@ -1,11 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import { TodoType } from '../types/types';
-
+import { addTodo } from '../api';
 type WriteTodoProps = {
-  addTodoFn: (todo: TodoType) => void;
-  todosLength: number;
+  setterTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
 };
-const WriteTodo = ({ addTodoFn, todosLength }: WriteTodoProps) => {
+const WriteTodo = (props: WriteTodoProps) => {
   const [todo, setTodo] = useState('');
 
   const handleChange: (e: ChangeEvent<HTMLInputElement>) => void = (e) => {
@@ -33,12 +32,7 @@ const WriteTodo = ({ addTodoFn, todosLength }: WriteTodoProps) => {
           className="py-2 px-4 disabled:bg-blue-100 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600 text-white rounded"
           onClick={() => {
             setTodo('');
-            addTodoFn({
-              author: 'Dale',
-              id: `todo_${todosLength}`,
-              isComplete: false,
-              title: todo,
-            });
+            addTodo(todo, props.setterTodos);
           }}
         >
           Add
